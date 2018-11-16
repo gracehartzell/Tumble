@@ -11,7 +11,8 @@ import {
   Text, 
   View,
   TouchableOpacity,
-  Image
+  Image,
+  Alert
 } from 'react-native';
 
 class Login extends React.Component {
