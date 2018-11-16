@@ -1,35 +1,39 @@
 import React from 'react';
 import Home from '../screens/Home';
+import styles from '../styles'
 import Profile from '../screens/Profile';
 import Matches from '../screens/Matches';
-import Login from '../screens/Login';
+import { Ionicons } from '@expo/vector-icons';
+import { TabNavigator } from 'react-navigation';
+import { Image } from 'react-native';
 
-import { createBottomTabNavigator } from 'react-navigation';
-
-export default createBottomTabNavigator (
+export default TabNavigator(
   {
     Profile: {
       screen: Profile,
       navigationOptions: {
-        tabBarLabel: 'Profile',
+        tabBarLabel: ' ',
+        tabBarIcon: ({focused}) => (
+          <Ionicons style={ styles.nav } color={'#df4723'} name={focused ? 'ios-person' : 'ios-person-outline'} size={40}/>
+        ),
       },
-    },
-    Login: {
-      screen: Login,
-      navigationOptions: {
-        tabBarLabel: 'Login',
-      }
     },
     Home: {
       screen: Home,
       navigationOptions: {
-        tabBarLabel: 'Home',
+        tabBarLabel: ' ',
+        tabBarIcon: ({focused}) => (
+          <Image style={ styles.logo } source={require('../assets/logo.png')}/>
+        ),
       }
     },
     Matches: {
       screen: Matches,
       navigationOptions: {
-        tabBarLabel: 'Matches',
+        tabBarLabel: ' ',
+        tabBarIcon: ({focused}) => (
+          <Ionicons style={ styles.nav } color={'#df4723'} name={focused ? 'ios-chatbubbles' : 'ios-chatbubbles-outline'} size={40}/>
+        ),
       },
     },
   },
@@ -37,12 +41,13 @@ export default createBottomTabNavigator (
     navigationOptions: {
       header: null
     },
-    tabBarPosition: 'bottom',
+    tabBarPosition: 'top',
     initialRouteName: 'Home',
+    animationEnabled: true,
+    swipeEnabled: false,
     tabBarOptions: {
       style: {
-        height: 50,
-        backgroundColor: '#fff',
+        height: 75,
       },
     }
   }

@@ -1,19 +1,21 @@
 import React from 'react';
-import { createStackNavigator } from 'react-navigation';
-import TabNavigator from './TabNavigator';
+import { StackNavigator } from 'react-navigation';
+import TabNavigator from './TabNavigator.js';
+import Chat from '../screens/Chat.js';
 
-const RootStackNavigator = createStackNavigator(
+const RootStackNavigator = StackNavigator(
   {
     Main: {
       screen: TabNavigator,
     },
+    Chat: {
+      screen: Chat,
+    },
   }
 );
 
-class RootNavigator extends React.Component {
+export default class RootNavigator extends React.Component {
   render() {
     return <RootStackNavigator/>;
   }
 }
-
-export default RootNavigator;
